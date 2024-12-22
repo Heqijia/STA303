@@ -128,9 +128,9 @@ Here we provide some configuration examples that provide good result:
   
 
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-    <img src="assets/image-20241220203101530.png" alt="Image 1" style="flex: 1; max-width: 20%; height: auto;"/>
-    <img src="assets/image-20241220203112103.png" alt="Image 2" style="flex: 1; max-width: 20%; height: auto;"/>
-    <img src="assets/image-20241221180102772.png" alt="Image 3" style="flex: 1; max-width: 20%; height: auto;"/>
+    <img src="assets/image-20241220203101530.png" alt="Image 1" style="flex: 1; max-width: 33%; height: auto;"/>
+    <img src="assets/image-20241220203112103.png" alt="Image 2" style="flex: 1; max-width: 33%; height: auto;"/>
+    <img src="assets/image-20241221180102772.png" alt="Image 3" style="flex: 1; max-width: 33%; height: auto;"/>
   </div>
 
 
@@ -160,6 +160,7 @@ Here we provide some configuration examples that provide good result:
   ```
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="assets/image-20241221173322979.png" alt="Image 1" style="flex: 1; max-width: 20%; height: auto;"/>
-  <img src="assets/image-20241221173406017.png" alt="Image 2" style="flex: 1; max-width: 20%; height: auto;"/>
+  <img src="assets/image-20241221173322979.png" alt="Image 1" style="flex: 1; max-width: 33%; height: auto;"/>
+  <img src="assets/image-20241221173406017.png" alt="Image 2" style="flex: 1; max-width: 33%; height: auto;"/>
 </div>
+
