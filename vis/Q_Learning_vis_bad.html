@@ -6,19 +6,50 @@
     <title>Heatmap_MDS_data</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: space-between; /* Add spacing between items */
+            align-items: center; /* Center align vertically */
+        }
+
+        .image-container img {
+            max-width: 100%; /* Scale the image properly */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+
+        .plot-container {
+            flex: 1; /* Allow the plot container to grow */
+        }
+
+        .image-container {
+            flex: 1; /* Allow the image container to grow */
+            padding: 10px;
+            padding-left: 50px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="button-container">
         <button id="pauseResume" class="font_small">Pause</button>
     </div>
+        <!-- <div class="container"> -->
+        <h3 class="font_median">
+            DQN learning Process
+        </h3>
+        <!-- <div class="plot_container" id="MDS_data"></div> -->
 
     <div class="container">
-        <h3 class="font_median">
-            Q - learning Process
-        </h3>
-        <div class="plot_container" id="MDS_data"></div>
-        
+        <!-- Left Image -->
+        <div class="image-container">
+            <img src="../assets/image-20241222111941244.png" alt="Example Image">
+        </div>
+
+        <!-- Right Plot -->
+        <div class="plot-container" id="MDS_data"></div>
     </div>
 
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -41,9 +72,9 @@
             }
         });
         
-        var margin = { top: 20, right: 20, bottom: 50, left: 40 },
-            width = 500 - margin.left - margin.right,  // Smaller width
-            height = 500 - margin.top - margin.bottom;  // Smaller height
+        var margin = { top: 40, right: 20, bottom: 50, left: 40 },
+            width = 500 - margin.left - margin.right,  // Adjusted width for smaller heatmap
+            height = 500 - margin.top - margin.bottom;  // Adjusted height for smaller heatmap
         
         var svg = d3.select("#MDS_data")
             .append("svg")
@@ -76,7 +107,6 @@
         
                 var subCellSize = cellSize;
         
-                // Define the triangles and text positions
                 var triangleData = [
                     { points: [[0, 0], [subCellSize / 2, subCellSize / 2], [subCellSize, 0]], textX: subCellSize / 4, textY: subCellSize / 4 },
                     { points: [[0, 0], [subCellSize / 2, subCellSize / 2], [0, subCellSize]], textX: subCellSize / 4, textY: (3 * subCellSize) / 4 },
@@ -84,11 +114,8 @@
                     { points: [[0, subCellSize], [subCellSize / 2, subCellSize / 2], [subCellSize, subCellSize]], textX: (3 * subCellSize) / 4, textY: (3 * subCellSize) / 4 }
                 ];
         
-                // Draw triangles and place text
                 block.flat().forEach((value, subIndex) => {
                     var triangle = triangleData[subIndex];
-        
-                    // Calculate the centroid of the triangle for precise text alignment
                     var x1 = triangle.points[0][0],
                         y1 = triangle.points[0][1],
                         x2 = triangle.points[1][0],
@@ -99,21 +126,19 @@
                     var centroidX = (x1 + x2 + x3) / 3;
                     var centroidY = (y1 + y2 + y3) / 3;
         
-                    // Draw triangle
                     blockGroup.append("polygon")
                         .attr("points", triangle.points.map(p => p.join(",")).join(" "))
                         .attr("fill", colorScale(value))
                         .attr("stroke", "#000")
                         .attr("stroke-width", 1);
         
-                    // Add text inside the triangle
                     blockGroup.append("text")
                         .attr("x", centroidX)
                         .attr("y", centroidY)
-                        .attr("dy", "0.35em") // Adjust vertical alignment
+                        .attr("dy", "0.35em")
                         .style("text-anchor", "middle")
                         .style("dominant-baseline", "middle")
-                        .style("font-size", "8px")  // Smaller font size
+                        .style("font-size", "8px")
                         .text(value);
                 });
             });
@@ -125,7 +150,7 @@
                 .attr("x", width / 2)
                 .attr("y", -10)
                 .style("text-anchor", "middle")
-                .style("font-size", "14px")  // Smaller font size for title
+                .style("font-size", "16px")
                 .text("Current Steps: " + (currentIndex + 1) * 100);
         
             currentIndex++;
@@ -137,12 +162,11 @@
                     return;
                 }
         
-                // Reshape data for 4x4 grid with 16 blocks and 4 subcells in each block
                 data = parsedData.map(row => {
-                    const values = Object.values(row).slice(0, 64);  // We need the first 64 values
+                    const values = Object.values(row).slice(0, 64);
                     let blocks = [];
                     for (let i = 0; i < 16; i++) {
-                        blocks.push(values.slice(i * 4, (i + 1) * 4));  // Slice every 4 elements into blocks
+                        blocks.push(values.slice(i * 4, (i + 1) * 4));
                     }
                     return blocks;
                 });
