@@ -10,7 +10,7 @@
 ## 01 Installation
 
 ```bash
-git clone https://github.com/username/repository-name.git
+git clone https://github.com/Heqijia/STA303
 conda create --name STA303 python=3.9
 conda activate STA303
 
@@ -89,6 +89,10 @@ Details of the algorithms and analysis can be seen in our report.
 - `agent/` 
 
   Agent Class.
+  
+- `vis/`
+
+  A visualization dashboard of Q table for several examples.
 
 
 
@@ -163,4 +167,3 @@ Here we provide some configuration examples that provide good result:
   <img src="assets/image-20241221173322979.png" alt="Image 1" style="flex: 1; max-width: 33%; height: auto;"/>
   <img src="assets/image-20241221173406017.png" alt="Image 2" style="flex: 1; max-width: 33%; height: auto;"/>
 </div>
-
