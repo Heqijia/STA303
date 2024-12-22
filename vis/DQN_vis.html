@@ -131,7 +131,7 @@
             currentIndex++;
         }
         
-        d3.csv("https://raw.githubusercontent.com/Heqijia/STA303/refs/heads/main/vis/Q_out.csv", d3.autoType)
+        d3.csv("https://raw.githubusercontent.com/Heqijia/STA303/refs/heads/main/vis/dqn_out.csv", d3.autoType)
             .then(parsedData => {
                 if (!parsedData || parsedData.length === 0) {
                     return;
