@@ -11,6 +11,7 @@
 
 ```bash
 git clone https://github.com/Heqijia/STA303
+cd STA303
 conda create --name STA303 python=3.9
 conda activate STA303
 
